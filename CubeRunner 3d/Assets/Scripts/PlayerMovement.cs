@@ -16,12 +16,12 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal");
         float z = Input.GetAxisRaw("Vertical");
 
-        movement = rb.position + new Vector3(x, 0, z).normalized;
+        movement = new Vector3(x, 0, z).normalized;
     }
 
     private void FixedUpdate()
     {
-        rb.MovePosition(movement * speed * Time.deltaTime);
+        rb.MovePosition((Vector3)transform.position + movement * speed * Time.deltaTime);
     }
 
 
